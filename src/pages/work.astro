@@ -96,17 +96,16 @@ const groups = [
     items: [
       {
         title: 'The Modern Herbal Dispensatory',
-        blurb: 'Co-authored with Steven Horne (North Atlantic Books). A medicine-making guide for the practicing herbalist.',
+        blurb: 'A medicine-making guide for the practicing herbalist. Co-authored with Steven Horne (North Atlantic Books, hardcover edition 2024).',
+        href: 'https://www.northatlanticbooks.com/shop/the-modern-herbal-dispensatory-hardcover-edition/',
+        image: '/snapshots/book.jpg',
+        mediaKind: 'book',
       },
       {
-        title: 'Substack',
-        blurb: 'Long-form writing on herbal medicine, philosophy of medicine, and the practice of practice.',
-      },
-      {
-        title: 'Materia Medica Weekly',
-        blurb: 'Weekly herb magazine. Locked 10-page template; new herb every Monday.',
-        image: '/snapshots/mmw.png',
-        href: 'https://materiamedicaweekly.netlify.app',
+        title: 'The Path Between',
+        blurb: 'Substack. Long-form writing on herbal medicine, philosophy of science, and the history of healing. Recent: "Purity Doesn\'t Have Units," "Thinking Tools: Philosophy of Science for the Rest of Us," "Developing Clinical Thinking — The Theory of Dents."',
+        href: 'https://thomaseasley.substack.com',
+        image: '/snapshots/substack.png',
       },
     ],
   },
@@ -145,7 +144,7 @@ const groups = [
         <h2 class="group__title">{g.title}</h2>
         <div class="group__items">
           {g.items.map((item) => (
-            <article class={`item${item.image ? ' item--has-image' : ''}`} id={item.id ?? undefined}>
+            <article class={`item${item.image ? ' item--has-image' : ''}${item.mediaKind ? ' item--' + item.mediaKind : ''}`} id={item.id ?? undefined}>
               <div class="item__media">
                 {item.image ? (
                   item.href
@@ -240,6 +239,13 @@ const groups = [
     border-radius: 2px;
     filter: saturate(0.92);
     transition: filter 200ms ease, transform 200ms ease;
+  }
+
+  .item--book .item__media img {
+    object-fit: contain;
+    background: var(--bg-elev);
+    padding: 0.5rem;
+    aspect-ratio: 16 / 10;
   }
 
   .item__image-link { display: block; }
