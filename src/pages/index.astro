@@ -49,15 +49,20 @@ const featured = [
 <BaseLayout current="home">
   <section class="hero">
     <div class="wrap hero__inner">
-      <p class="eyebrow">Easley Consulting</p>
-      <h1 class="hero__title">Thomas Easley.</h1>
-      <p class="hero__sub">Herbalist, educator, builder of useful things.</p>
-      <p class="hero__lede">
-        I run a herbal medicine school, see clients in clinical practice, and write books. Alongside that I build tools for researchers, historians, clinicians, and businesses — AI systems for knowledge extraction, retrieval, and clinical reasoning. When the problem is interesting and the people are good, I take on outside work.
-      </p>
-      <div class="cta-row">
-        <a class="cta" href="/work">See the work</a>
-        <a class="cta" href="/inquire">Start a conversation</a>
+      <div class="hero__text">
+        <p class="eyebrow">Easley Consulting</p>
+        <h1 class="hero__title">Thomas Easley.</h1>
+        <p class="hero__sub">Herbalist, educator, builder of useful things.</p>
+        <p class="hero__lede">
+          I run a herbal medicine school, see clients in clinical practice, and write books. Alongside that I build tools for researchers, historians, clinicians, and businesses — AI systems for knowledge extraction, retrieval, and clinical reasoning. When the problem is interesting and the people are good, I take on outside work.
+        </p>
+        <div class="cta-row">
+          <a class="cta" href="/work">See the work</a>
+          <a class="cta" href="/inquire">Start a conversation</a>
+        </div>
+      </div>
+      <div class="hero__portrait">
+        <img src="/portrait.jpg" alt="Thomas Easley" loading="eager" width="800" height="800" />
       </div>
     </div>
   </section>
@@ -155,6 +160,43 @@ const featured = [
   .hero {
     padding: var(--space-7) 0 var(--space-6);
     border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  .hero__portrait {
+    position: relative;
+  }
+
+  .hero__portrait img {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    filter: saturate(0.95) contrast(1.02);
+    box-shadow: 0 1px 0 var(--rule), 0 0 0 8px var(--bg), 0 0 0 9px var(--rule-soft);
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  @media (max-width: 820px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+    .hero__portrait { order: -1; }
+    .hero__portrait img {
+      max-width: 200px;
+      margin-left: 0;
+    }
   }
 
   .hero__title {
