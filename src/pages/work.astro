@@ -3,18 +3,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const groups = [
   {
+    title: 'Business websites',
+    items: [
+      {
+        title: 'Andalusia',
+        id: 'andalusia',
+        blurb: 'Editorial city site for Andalusia, Alabama. Civic gazette aesthetic with sections for history, government, community, economy, and outdoors. Astro + content collections, CMS-managed. In development.',
+        image: '/snapshots/andalusia.png',
+      },
+      {
+        title: "Hunt & Fish Shelby",
+        blurb: "Shelby County, Alabama fishing and hunting almanac. Daily best-times computed from solunar tables, live USGS and NWS data. Editorial almanac aesthetic. Sponsored by Alabama Poured Walls.",
+        href: 'https://huntandfishshelby.com',
+        image: '/snapshots/huntfish.png',
+      },
+      {
+        title: 'Alabama Poured Walls',
+        blurb: 'Central Alabama poured concrete foundation contractor (Curtis Jackson, founded 2006). B2B-focused with a builder-direct phone line and a tire-kicker-filtering email form. Live since 2022.',
+        href: 'https://alabamapouredwalls.com',
+        image: '/snapshots/apw.png',
+      },
+      {
+        title: 'South Alabama Spray Foam',
+        blurb: 'Spray foam and insulation contractor serving Andalusia, Opp, Florala, and nearby communities. Same builder-funnel pattern as Alabama Poured Walls, retuned for residential insulation.',
+        href: 'https://southalabamasprayfoam.com',
+        image: '/snapshots/sasf.png',
+      },
+    ],
+  },
+  {
     title: 'Knowledge systems and software',
     items: [
       {
-        title: 'NexSys',
-        blurb: "Knowledge workspace product. Three surfaces: an expert knowledge graph (Nexus), the user's personal capture layer (Notes), and an AI thinking partner grounded in both (Thoughts). ThomasVault is the first deployment — 500+ herbal monographs, conditions, and clinical protocols, with tiered membership.",
-        href: 'https://thomasvault.netlify.app',
-        image: '/snapshots/nexsys.png',
-      },
-      {
         title: 'Encyclopaedia of Western Medicine',
-        blurb: 'AI-powered reference covering the history and philosophy of Western medicine. 700+ pages, 15,000+ verbatim evidence cards traced to primary sources, three-layer fidelity audit, evidence-grade public wiki.',
-        href: '/workflows#case-1',
+        id: 'encyclopaedia',
+        blurb: 'AI-powered reference covering the history and philosophy of Western medicine. 700+ pages, 15,000+ verbatim evidence cards traced to primary sources, three-layer fidelity audit, evidence-grade wiki.',
         image: '/snapshots/encyclopaedia.png',
       },
       {
@@ -25,19 +48,19 @@ const groups = [
       },
       {
         title: 'HerbalMedicine.AI',
+        id: 'hmai',
         blurb: "AI-navigated knowledge graph database of Thomas's writings and curriculum. Tier-gated chat product with WordPress membership integration.",
-        href: '/workflows#case-3',
         image: '/snapshots/hmai.png',
       },
       {
         title: 'Western Herbal Clinical Reference',
+        id: 'whcr',
         blurb: '760-entry searchable reference grounded in Western herbal tradition. Conditions, interventions, and concepts in one cross-linked interface. Astro front end pulling from a private clinical-reference repo at build time.',
-        href: 'https://clinicalreference.eclecticschoolofherbalmedicine.com',
         image: '/snapshots/wmm.png',
       },
       {
         title: 'ThomasBrain Search',
-        blurb: 'Hybrid semantic and keyword MCP server over 200+ herbs, conditions, protocols, and curriculum. The retrieval layer behind every AI system above.',
+        blurb: 'Hybrid reasoning-reranking search index over a 2,000-book reference library. MCP server that grounds every AI system above.',
       },
       {
         title: 'Prose',
@@ -72,8 +95,8 @@ const groups = [
     title: 'Writing',
     items: [
       {
-        title: 'Books',
-        blurb: 'The Modern Herbal Dispensatory (with Steven Horne, North Atlantic Books). Three additional titles in print.',
+        title: 'The Modern Herbal Dispensatory',
+        blurb: 'Co-authored with Steven Horne (North Atlantic Books). A medicine-making guide for the practicing herbalist.',
       },
       {
         title: 'Substack',

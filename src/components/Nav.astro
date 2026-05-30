@@ -1,11 +1,5 @@
 ---
 const { current = '' } = Astro.props;
-const links = [
-  { href: '/', label: 'Easley Consulting', mark: true },
-  { href: '/work', label: 'Work' },
-  { href: '/workflows', label: 'Workflows' },
-  { href: '/inquire', label: 'Inquire' },
-];
 ---
 <header class="nav">
   <div class="wrap nav__inner">
@@ -15,7 +9,6 @@ const links = [
     </a>
     <nav class="nav__links" aria-label="Primary">
       <a href="/work" class={current === 'work' ? 'is-current' : ''}>Work</a>
-      <a href="/workflows" class={current === 'workflows' ? 'is-current' : ''}>Workflows</a>
       <a href="/inquire" class={current === 'inquire' ? 'is-current' : ''}>Inquire</a>
     </nav>
   </div>

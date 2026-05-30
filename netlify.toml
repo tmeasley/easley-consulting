@@ -23,3 +23,13 @@
   from = "/portfolio"
   to = "/work"
   status = 301
+
+[[redirects]]
+  from = "/workflows"
+  to = "/work"
+  status = 301
+
+[[redirects]]
+  from = "/workflows/*"
+  to = "/work"
+  status = 301

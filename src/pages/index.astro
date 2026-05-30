@@ -3,16 +3,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const featured = [
   {
-    title: 'NexSys',
-    blurb: "Knowledge workspace product. Three surfaces: an expert knowledge graph (Nexus), personal capture (Notes), and an AI thinking partner grounded in both (Thoughts). ThomasVault is the first deployment.",
-    href: 'https://thomasvault.netlify.app',
-    domain: 'Knowledge system',
-    image: '/snapshots/nexsys.png',
+    title: 'Andalusia',
+    blurb: 'Editorial city site for Andalusia, Alabama. Civic gazette aesthetic — population, geography, history, government, outdoors. Astro + content collections.',
+    href: '/work#andalusia',
+    domain: 'Business website',
+    image: '/snapshots/andalusia.png',
+  },
+  {
+    title: "Hunt & Fish Shelby",
+    blurb: "Shelby County fishing and hunting almanac. Daily best-times calculated from moon, sun, and live conditions. Sponsored by Alabama Poured Walls.",
+    href: 'https://huntandfishshelby.com',
+    domain: 'Business website',
+    image: '/snapshots/huntfish.png',
+  },
+  {
+    title: 'Alabama Poured Walls',
+    blurb: 'Central Alabama poured concrete foundation contractor. B2B-focused, builder-first contact funnel. Live since 2022.',
+    href: 'https://alabamapouredwalls.com',
+    domain: 'Business website',
+    image: '/snapshots/apw.png',
   },
   {
     title: 'Encyclopaedia of Western Medicine',
     blurb: 'AI-powered reference on the history and philosophy of Western medicine. 700+ pages, 15,000+ verbatim evidence cards traced to primary sources, three-layer fidelity audit.',
-    href: '/workflows#case-1',
+    href: '/work#encyclopaedia',
     domain: 'AI system',
     image: '/snapshots/encyclopaedia.png',
   },
@@ -24,23 +38,9 @@ const featured = [
     image: '/snapshots/mhn.png',
   },
   {
-    title: 'Eclectic School of Herbal Medicine',
-    blurb: 'Foundational and clinical herbal medicine programs. Hundreds of students across multiple cohorts.',
-    href: 'https://eclecticschoolofherbalmedicine.com',
-    domain: 'Education',
-    image: '/snapshots/eshm.png',
-  },
-  {
-    title: 'Three Notch Community Health',
-    blurb: 'Community health center in Andalusia, AL. Sliding-scale consultations, classes, and a replicable Community Vitality Center model.',
-    href: 'https://threenotchcommunityhealth.com',
-    domain: 'Clinic',
-    image: '/snapshots/tnch.png',
-  },
-  {
     title: 'HerbalMedicine.AI',
     blurb: "AI-navigated knowledge graph of Thomas's writings, curriculum, and clinical materia medica. Tier-gated chat product with WordPress membership integration.",
-    href: '/workflows#case-3',
+    href: '/work#hmai',
     domain: 'AI system',
     image: '/snapshots/hmai.png',
   },
@@ -54,7 +54,7 @@ const featured = [
         <h1 class="hero__title">Thomas Easley.</h1>
         <p class="hero__sub">Herbalist, educator, builder of useful things.</p>
         <p class="hero__lede">
-          I run a herbal medicine school, see clients in clinical practice, and write books. Alongside that I build tools for researchers, historians, clinicians, and businesses — AI systems for knowledge extraction, retrieval, and clinical reasoning. When the problem is interesting and the people are good, I take on outside work.
+          I run a herbal medicine school, see clients in clinical practice, and write books. Alongside that I build tools for researchers, historians, clinicians, and businesses — AI systems for knowledge extraction and retrieval. When the problem is interesting and the people are good, I take on outside work.
         </p>
         <div class="cta-row">
           <a class="cta" href="/work">See the work</a>
@@ -67,13 +67,17 @@ const featured = [
     </div>
   </section>
 
+  <section class="photo-band photo-band--narrow" aria-hidden="true">
+    <img src="/photos/bookshelf.jpg" alt="" loading="lazy" />
+  </section>
+
   <section class="section">
     <div class="wrap">
       <p class="eyebrow">What I do</p>
       <div class="grid grid--3 what">
         <div>
           <h3>Herbal medicine and clinical practice</h3>
-          <p>Twenty-plus years in clinical herbalism. Four books in print, including <em>The Modern Herbal Dispensatory</em>. I run the Eclectic School of Herbal Medicine and a community clinic in Andalusia, Alabama.</p>
+          <p>Twenty-five years in clinical herbalism. Co-author of <em>The Modern Herbal Dispensatory</em>. I run the Eclectic School of Herbal Medicine and a community clinic in Andalusia, Alabama.</p>
         </div>
         <div>
           <h3>Education and curriculum design</h3>
@@ -81,7 +85,7 @@ const featured = [
         </div>
         <div>
           <h3>AI systems and knowledge graphs</h3>
-          <p>AI systems for research, knowledge extraction, and clinical reasoning. I designed the Encyclopaedia of Western Medicine (15,000+ evidence cards, 700+ pages) and the hybrid search index over a 370-book reference library.</p>
+          <p>AI systems for research and knowledge extraction. I designed the Encyclopaedia of Western Medicine (15,000+ evidence cards, 700+ pages) and a hybrid reasoning-reranking search index over a 2,000-book reference library.</p>
         </div>
       </div>
     </div>
@@ -111,6 +115,10 @@ const featured = [
     </div>
   </section>
 
+  <section class="photo-band" aria-hidden="true">
+    <img src="/photos/apothecary.jpg" alt="" loading="lazy" />
+  </section>
+
   <section class="section">
     <div class="wrap">
       <p class="eyebrow">Featured work</p>
@@ -130,17 +138,6 @@ const featured = [
         ))}
       </div>
       <p style="margin-top: var(--space-4);"><a class="cta" href="/work">See the full portfolio</a></p>
-    </div>
-  </section>
-
-  <section class="section workflows-teaser">
-    <div class="wrap wrap--narrow">
-      <p class="eyebrow">Workflows</p>
-      <h2>Three things I've built.</h2>
-      <p class="lede">
-        Three systems running now. Each started as a problem I was personally stuck on. Walkthroughs of what they do, how they're wired, and where they almost didn't work.
-      </p>
-      <p style="margin-top: var(--space-3);"><a class="cta" href="/workflows">Read the writeups</a></p>
     </div>
   </section>
 
@@ -176,13 +173,12 @@ const featured = [
   .hero__portrait img {
     display: block;
     width: 100%;
-    max-width: 360px;
-    aspect-ratio: 1 / 1;
+    max-width: 380px;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
+    object-position: center 20%;
+    border-radius: 3px;
     filter: saturate(0.95) contrast(1.02);
-    box-shadow: 0 1px 0 var(--rule), 0 0 0 8px var(--bg), 0 0 0 9px var(--rule-soft);
     margin-left: auto;
     margin-right: 0;
   }
@@ -190,13 +186,9 @@ const featured = [
   @media (max-width: 820px) {
     .hero__inner {
       grid-template-columns: 1fr;
-      gap: var(--space-5);
+      gap: var(--space-4);
     }
-    .hero__portrait { order: -1; }
-    .hero__portrait img {
-      max-width: 200px;
-      margin-left: 0;
-    }
+    .hero__portrait { display: none; }
   }
 
   .hero__title {
@@ -313,6 +305,37 @@ const featured = [
 
   .workflows-teaser, .inquire-cta {
     background: var(--bg-elev);
+  }
+
+  .photo-band {
+    width: 100%;
+    overflow: hidden;
+    background: var(--bg-elev);
+    border-top: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .photo-band img {
+    display: block;
+    width: 100%;
+    height: clamp(220px, 38vw, 480px);
+    object-fit: cover;
+    object-position: center 55%;
+    filter: saturate(0.95) contrast(1.02);
+  }
+
+  .photo-band--narrow img {
+    height: clamp(180px, 28vw, 340px);
+    object-position: center 50%;
+  }
+
+  @media (max-width: 720px) {
+    .photo-band img {
+      height: 200px;
+    }
+    .photo-band--narrow img {
+      height: 160px;
+    }
   }
 
   .who {
