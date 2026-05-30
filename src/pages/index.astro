@@ -53,7 +53,7 @@ const featured = [
       <h1 class="hero__title">Thomas Easley.</h1>
       <p class="hero__sub">Herbalist, educator, builder of useful things.</p>
       <p class="hero__lede">
-        I run a herbal medicine school, see clients in clinical practice, and write books. Alongside that I design AI systems for research, knowledge extraction, and clinical reasoning. When the problem is interesting and the people are good, I take on outside work.
+        I run a herbal medicine school, see clients in clinical practice, and write books. Alongside that I build tools for researchers, historians, clinicians, and businesses — AI systems for knowledge extraction, retrieval, and clinical reasoning. When the problem is interesting and the people are good, I take on outside work.
       </p>
       <div class="cta-row">
         <a class="cta" href="/work">See the work</a>
@@ -77,6 +77,30 @@ const featured = [
         <div>
           <h3>AI systems and knowledge graphs</h3>
           <p>AI systems for research, knowledge extraction, and clinical reasoning. I designed the Encyclopaedia of Western Medicine (15,000+ evidence cards, 700+ pages) and the hybrid search index over a 370-book reference library.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section who">
+    <div class="wrap">
+      <p class="eyebrow">Who I build for</p>
+      <div class="who-grid">
+        <div class="who-card">
+          <h3>Researchers</h3>
+          <p>Custom retrieval over your literature. Citation networks. Verbatim quote extraction. Knowledge graphs grounded in primary sources, not hallucinated summaries.</p>
+        </div>
+        <div class="who-card">
+          <h3>Historians</h3>
+          <p>Archive digitization with OCR and structured extraction. Evidence-grounded synthesis. Source-of-truth pipelines that quote verbatim, cite the page, and never paraphrase.</p>
+        </div>
+        <div class="who-card">
+          <h3>Clinicians</h3>
+          <p>Decision-support tools. Bloodwork analysis. SOAP note assistants. Clinical reasoning systems grounded in your own protocols and materia medica, not generic medical training data.</p>
+        </div>
+        <div class="who-card">
+          <h3>Businesses</h3>
+          <p>Knowledge graphs over internal documentation. Custom AI workflows for ops, training, and research. Practical, durable, built to last past the demo.</p>
         </div>
       </div>
     </div>
@@ -107,9 +131,9 @@ const featured = [
   <section class="section workflows-teaser">
     <div class="wrap wrap--narrow">
       <p class="eyebrow">Workflows</p>
-      <h2>Three production AI systems.</h2>
+      <h2>Three things I've built.</h2>
       <p class="lede">
-        Three systems running today. Each replaces work that would otherwise take a person years. Walkthroughs of how each is built.
+        Three systems running now. Each started as a problem I was personally stuck on. Walkthroughs of what they do, how they're wired, and where they almost didn't work.
       </p>
       <p style="margin-top: var(--space-3);"><a class="cta" href="/workflows">Read the writeups</a></p>
     </div>
@@ -247,5 +271,39 @@ const featured = [
 
   .workflows-teaser, .inquire-cta {
     background: var(--bg-elev);
+  }
+
+  .who {
+    background: var(--bg-elev);
+  }
+
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-3);
+  }
+
+  .who-card {
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--accent);
+  }
+
+  .who-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    margin-bottom: var(--space-2);
+  }
+
+  .who-card p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 32rem;
+  }
+
+  @media (max-width: 720px) {
+    .who-grid { grid-template-columns: 1fr; }
   }
 </style>
