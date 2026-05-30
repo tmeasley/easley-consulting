@@ -67,6 +67,18 @@ const featured = [
     </div>
   </section>
 
+  <section class="section section--story">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow">How this started</p>
+      <p class="story">
+        In the winter of 2023, in my father's last months, ChatGPT came out. He was a lifelong techie, and he fell in love with it immediately. I spent a lot of those last weeks at his bedside with my laptop between us, exploring this new world together. From there I picked up coding, web development, and AI tooling.
+      </p>
+      <p class="story">
+        I'd still rather be outside than in front of a screen. Technology is helping me do that more and more.
+      </p>
+    </div>
+  </section>
+
   <section class="photo-band photo-band--narrow" aria-hidden="true">
     <img src="/photos/bookshelf.jpg" alt="" loading="lazy" />
   </section>
@@ -305,6 +317,24 @@ const featured = [
 
   .workflows-teaser, .inquire-cta {
     background: var(--bg-elev);
+  }
+
+  .section--story {
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-5);
+    border-top: 0;
+  }
+
+  .story {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 36rem;
+  }
+
+  .story + .story {
+    margin-top: var(--space-3);
   }
 
   .photo-band {
