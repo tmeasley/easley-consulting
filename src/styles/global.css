@@ -1,0 +1,260 @@
+/* Easley Consulting — global styles
+   Editorial typography, generous whitespace, single accent.
+   Palette: warm ivory background, deep charcoal text, ember-orange accent.
+*/
+
+:root {
+  /* color */
+  --bg: #faf6ef;
+  --bg-elev: #f3ede2;
+  --ink: #1a1a18;
+  --ink-soft: #45433e;
+  --ink-faint: #797568;
+  --rule: #d8cfbe;
+  --rule-soft: #ebe3d2;
+  --accent: #b4530f;
+  --accent-soft: #d68a3f;
+
+  /* type */
+  --serif: 'Iowan Old Style', 'Palatino Linotype', 'Palatino', 'Source Serif Pro', 'Georgia', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
+  --mono: 'SF Mono', 'JetBrains Mono', ui-monospace, 'Menlo', monospace;
+
+  /* scale */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 5rem;
+  --space-7: 8rem;
+
+  --measure: 36rem;
+  --wide: 72rem;
+  --narrow: 28rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15140f;
+    --bg-elev: #1d1c16;
+    --ink: #f0ebe0;
+    --ink-soft: #c4bfb1;
+    --ink-faint: #8a8576;
+    --rule: #383530;
+    --rule-soft: #26241e;
+    --accent: #e08338;
+    --accent-soft: #b4530f;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.55;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* type scale — editorial */
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 500;
+  margin: 0 0 var(--space-3);
+  letter-spacing: -0.012em;
+  line-height: 1.12;
+  color: var(--ink);
+}
+
+h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 500; letter-spacing: -0.022em; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); letter-spacing: -0.014em; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+h4 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); font-family: var(--sans); }
+
+p { margin: 0 0 var(--space-3); max-width: var(--measure); }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--ink);
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 120ms ease, text-decoration-color 120ms ease;
+}
+a:hover { color: var(--accent); }
+
+strong { font-weight: 600; }
+em { font-style: italic; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: var(--space-5) 0; }
+
+ul, ol { padding-left: 1.2rem; margin: 0 0 var(--space-3); }
+li { margin-bottom: 0.4rem; }
+
+/* utility classes */
+.wrap {
+  width: 100%;
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+.wrap--narrow {
+  max-width: 48rem;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  display: inline-block;
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-right: 0.6rem;
+  transform: translateY(-1px);
+}
+
+.lede {
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.section {
+  padding: var(--space-7) 0;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.section:first-of-type { border-top: 0; }
+
+.section--tight { padding: var(--space-5) 0; }
+
+.cta {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  letter-spacing: -0.005em;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--accent);
+  transition: color 120ms ease, transform 120ms ease;
+}
+
+.cta::after {
+  content: "  →";
+  color: var(--accent);
+  transition: transform 120ms ease;
+  display: inline-block;
+}
+
+.cta:hover { color: var(--accent); }
+.cta:hover::after { transform: translateX(4px); }
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+  margin-top: var(--space-4);
+}
+
+/* form */
+form { max-width: 36rem; }
+.field { margin-bottom: var(--space-3); }
+.field label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.field input[type="text"],
+.field input[type="email"],
+.field textarea {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink);
+  transition: border-color 120ms ease;
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.field textarea { min-height: 7rem; resize: vertical; }
+
+.radio-group {
+  display: grid;
+  gap: 0.5rem;
+}
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--serif);
+  cursor: pointer;
+}
+.radio-option input { accent-color: var(--accent); }
+
+button[type="submit"] {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  background: var(--ink);
+  color: var(--bg);
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 120ms ease;
+  letter-spacing: 0.01em;
+}
+button[type="submit"]:hover { background: var(--accent); }
+
+.honeypot { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+/* responsive grid for cards */
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+@media (max-width: 720px) {
+  .grid--2, .grid--3 { grid-template-columns: 1fr; }
+  .section { padding: var(--space-5) 0; }
+}
+
+::selection { background: var(--accent); color: var(--bg); }

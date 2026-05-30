@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  current="inquire"
+  title="Inquire — Easley Consulting"
+  description="Tell me about the work. Selective intake. I read every message and write back personally within a week."
+>
+  <section class="section section--tight intro">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow">Inquire</p>
+      <h1>Tell me about the work.</h1>
+      <p class="lede">
+        I take on a small number of outside projects each year. Selective on purpose — it keeps the work honest. Email is the relational medium here; I read every message and write back personally within a week.
+      </p>
+    </div>
+  </section>
+
+  <section class="section form-section">
+    <div class="wrap form-grid">
+      <div class="form-grid__form">
+        <form
+          name="inquire"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="company"
+          action="/thanks"
+        >
+          <input type="hidden" name="form-name" value="inquire" />
+          <p class="honeypot">
+            <label>Don't fill this out if you're human: <input name="company" /></label>
+          </p>
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name" />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label>Project type</label>
+            <div class="radio-group">
+              <label class="radio-option"><input type="radio" name="project_type" value="AI workflow or knowledge system" checked /> AI workflow or knowledge system</label>
+              <label class="radio-option"><input type="radio" name="project_type" value="Education or curriculum" /> Education or curriculum</label>
+              <label class="radio-option"><input type="radio" name="project_type" value="Herbal medicine practice" /> Herbal medicine practice</label>
+              <label class="radio-option"><input type="radio" name="project_type" value="Something else" /> Something else</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Tell me about it</label>
+            <textarea id="message" name="message" rows="6" required placeholder="What you're working on, what's stuck, what 'done' looks like."></textarea>
+          </div>
+
+          <button type="submit">Send</button>
+        </form>
+      </div>
+
+      <aside class="form-grid__aside">
+        <div class="fit">
+          <h4>A fit for</h4>
+          <ul>
+            <li>Custom AI workflows for research, knowledge extraction, or clinical reasoning</li>
+            <li>Knowledge graphs and retrieval over your own corpus</li>
+            <li>Curriculum design and education product</li>
+            <li>Clinical practice and school consulting</li>
+          </ul>
+        </div>
+
+        <div class="fit fit--not">
+          <h4>Not a fit for</h4>
+          <ul>
+            <li>Generic chatbot integrations</li>
+            <li>SaaS marketing copy or growth hacking</li>
+            <li>Anything where speed matters more than craft</li>
+            <li>Work I can't talk about publicly later</li>
+          </ul>
+        </div>
+
+        <div class="fallback">
+          <h4>If the form fails</h4>
+          <p>Write directly to <a href="mailto:thomas@eclecticschoolofherbalmedicine.com">thomas@eclecticschoolofherbalmedicine.com</a>.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro h1 { margin-bottom: var(--space-3); }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .form-grid__aside {
+    border-left: 1px solid var(--rule-soft);
+    padding-left: var(--space-5);
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .fit h4 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-faint);
+    font-family: var(--sans);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+    padding-bottom: var(--space-1);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .fit--not h4 {
+    color: var(--ink-faint);
+  }
+
+  .fit ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .fit li {
+    padding: 0.4rem 0;
+    border-bottom: 1px dotted var(--rule-soft);
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .fit li:last-child { border-bottom: 0; }
+
+  .fit--not li {
+    color: var(--ink-faint);
+  }
+
+  .fallback h4 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-faint);
+    font-family: var(--sans);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+  }
+
+  .fallback p {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  @media (max-width: 820px) {
+    .form-grid { grid-template-columns: 1fr; gap: var(--space-5); }
+    .form-grid__aside { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule-soft); padding-top: var(--space-5); }
+  }
+</style>

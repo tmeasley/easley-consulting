@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  current="workflows"
+  title="Workflows — Easley Consulting"
+  description="Three AI workflows that hold real systems together: an LLM extraction pipeline with fidelity auditing, a 370-book chapter-card enrichment system, and a cross-domain auth bridge."
+>
+  <section class="section section--tight intro">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow">Workflows</p>
+      <h1>AI workflows that hold real systems together.</h1>
+      <p class="lede">
+        I don't sell AI hype. I build LLM-powered tooling for projects where the alternative is a person doing ten thousand hours of tedious work. Three workflows below are running in production right now.
+      </p>
+    </div>
+  </section>
+
+  <section class="section case" id="case-1">
+    <div class="wrap wrap--narrow">
+      <p class="case__num">Case 01</p>
+      <h2>The Encyclopaedia extraction pipeline.</h2>
+
+      <h4>The problem</h4>
+      <p>
+        I wanted a reference work covering the history and philosophy of Western medicine, sourced from ~370 primary texts ranging from Hippocrates to the early 20th century. Every claim had to trace back to a verbatim quote in a real book with a real page number. The alternative was hand-extraction across decades.
+      </p>
+
+      <h4>The pipeline</h4>
+      <ul class="pipeline">
+        <li><strong>OCR.</strong> PDF → marker-pdf local OCR → markdown chapter files. Mistral fallback for difficult scans.</li>
+        <li><strong>Extraction.</strong> Sonnet subagents extract verbatim claims per chapter — snippet, page number, themes, entity slugs.</li>
+        <li><strong>Three-layer fidelity audit.</strong> Layer 1 (verbatim match), Layer 2 (paraphrase detection), Layer 3 (connector drift in synthesized pages).</li>
+        <li><strong>Closed-loop repair.</strong> Audit → structured critique → rewrite → re-audit until threshold. Typically one to three cycles.</li>
+        <li><strong>Synthesis.</strong> Page-writing agents weave claims into prose with inline citations gating verbatim quotes behind an evidence page.</li>
+      </ul>
+
+      <h4>What it produced</h4>
+      <p>
+        Five thousand-plus evidence cards across 300+ encyclopaedia pages. Layer 2 fidelity went from 60.3 percent to 98.5 percent after the repair loop landed. The corpus now serves as a public-facing wiki at evidence-grade accuracy.
+      </p>
+
+      <h4>What I'd do differently</h4>
+      <p>
+        Earlier investment in the fidelity machinery. I shipped extraction first and discovered drift only after the corpus was large. Audit-first is cheaper than audit-after.
+      </p>
+    </div>
+  </section>
+
+  <section class="section case" id="case-2">
+    <div class="wrap wrap--narrow">
+      <p class="case__num">Case 02</p>
+      <h2>Library chapter-card enrichment.</h2>
+
+      <h4>The problem</h4>
+      <p>
+        A 370-book reference library. Each book has 20 to 100 chapters. Two needs: an AI retrieval index for grounding chat answers, and dense human-readable summaries that I'd actually want to read.
+      </p>
+
+      <h4>The pipeline</h4>
+      <ul class="pipeline">
+        <li><strong>Authority normalization.</strong> Cache built from existing curriculum so "stress response," "GAS," and "general adaptation syndrome" all collapse to a canonical entity.</li>
+        <li><strong>One workflow, a few profiles.</strong> Master extraction template with content profiles (medical, philosophical, herbal) rather than a new prompt per book.</li>
+        <li><strong>Right-sized model.</strong> DeepSeek V4 Flash for cost-efficient bulk classification. V4 Pro hard-ripped after a cost analysis showed Flash was sufficient.</li>
+        <li><strong>Resumable manifests.</strong> Multi-day runs survive interruption. Persisted progress logs and authority backlogs land in a dedicated runs directory.</li>
+        <li><strong>Split-fail queue.</strong> Books where chapter detection misfires go to a repair queue rather than corrupting the main batch.</li>
+      </ul>
+
+      <h4>What it produced</h4>
+      <p>
+        Searchable metadata across 7,000-plus chapters. Both AI-retrieval summaries and dense human-readable summaries per chapter. The retrieval index now grounds every AI tool I run.
+      </p>
+    </div>
+  </section>
+
+  <section class="section case" id="case-3">
+    <div class="wrap wrap--narrow">
+      <p class="case__num">Case 03</p>
+      <h2>WordPress to Supabase auth bridge.</h2>
+
+      <h4>The problem</h4>
+      <p>
+        HerbalMedicine.AI sells subscriptions through WooCommerce Memberships in WordPress. The chat app runs on Astro and Supabase. A single user shouldn't see two login screens.
+      </p>
+
+      <h4>The bridge</h4>
+      <ul class="pipeline">
+        <li><strong>Token issuer.</strong> Custom WP plugin generates short-lived JWT tokens stamped with membership tier.</li>
+        <li><strong>One-click entry.</strong> Tokens delivered as "Launch the chat" links inside the WP member dashboard.</li>
+        <li><strong>Astro callback.</strong> <code>/auth/callback</code> validates the JWT, exchanges it for a Supabase session, and lands the user inside the chat.</li>
+        <li><strong>Tier mapping.</strong> WP membership level → Supabase JWT claims → chat product entitlements.</li>
+        <li><strong>Magic-link fallback.</strong> For users who lose the WP session.</li>
+      </ul>
+
+      <h4>Shipped</h4>
+      <p>May 1, 2026. Zero double-login support tickets since.</p>
+    </div>
+  </section>
+
+  <section class="section how">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow">How I work</p>
+      <h2>The shape of an engagement.</h2>
+
+      <dl class="how-list">
+        <dt>Discovery is the first deliverable.</dt>
+        <dd>Before I write any code, I write a short document describing what the system actually has to do, what the user actually has to experience, and what failure looks like. Usually a week. Usually free.</dd>
+
+        <dt>I scope to ship.</dt>
+        <dd>Two-week increments. At the end of each, something works. If it doesn't, we stop and figure out why before adding more.</dd>
+
+        <dt>I write durable code.</dt>
+        <dd>Plain frameworks, sensible defaults, no clever abstractions. Someone else should be able to read it in two years and know what it does.</dd>
+
+        <dt>I don't do all of it.</dt>
+        <dd>I'm not the right person for high-volume support, marketing copy, generic CRUD apps, or anything where speed matters more than craft.</dd>
+      </dl>
+
+      <p style="margin-top: var(--space-5);"><a class="cta" href="/inquire">Start a conversation</a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro h1 { margin-bottom: var(--space-3); }
+
+  .case + .case { border-top: 1px solid var(--rule-soft); }
+
+  .case h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: var(--space-4);
+    letter-spacing: -0.015em;
+  }
+
+  .case__num {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  .case h4 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+    font-family: var(--sans);
+    font-weight: 700;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+  }
+
+  .case p {
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: var(--space-2);
+    max-width: none;
+  }
+
+  .pipeline {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 var(--space-3);
+    counter-reset: pipeline;
+  }
+
+  .pipeline li {
+    position: relative;
+    padding-left: 2.4rem;
+    padding-bottom: var(--space-3);
+    margin: 0;
+    counter-increment: pipeline;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .pipeline li::before {
+    content: counter(pipeline, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .pipeline li strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.9em;
+    background: var(--bg-elev);
+    padding: 0.1em 0.35em;
+    border-radius: 2px;
+  }
+
+  .how {
+    background: var(--bg-elev);
+  }
+
+  .how-list {
+    margin: var(--space-4) 0 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .how-list dt {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.005em;
+  }
+
+  .how-list dd {
+    margin: 0 0 var(--space-2);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+</style>

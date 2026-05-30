@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const featured = [
+  {
+    title: 'ThomasVault',
+    blurb: 'Knowledge workspace publishing 500+ herbal monographs, conditions, and clinical protocols. Tiered membership product on Quartz.',
+    href: 'https://thomasvault.netlify.app',
+    domain: 'Knowledge system',
+  },
+  {
+    title: 'Encyclopaedia of Western Medicine',
+    blurb: 'LLM-built reference work on the history and philosophy of medicine. 300+ pages, 5,000+ verbatim evidence cards, three-layer fidelity audit.',
+    href: '/workflows#case-1',
+    domain: 'AI workflow',
+  },
+  {
+    title: 'Mental Health Navigator',
+    blurb: 'Searchable database of 100 mental health patterns drawn from 16 medical traditions across 5 millennia. Astro + Supabase.',
+    href: '/work#mental-health-navigator',
+    domain: 'Software',
+  },
+  {
+    title: 'Eclectic School of Herbal Medicine',
+    blurb: 'Foundational and clinical herbal medicine programs. Hundreds of students across multiple cohorts.',
+    href: 'https://eclecticschoolofherbalmedicine.com',
+    domain: 'Education',
+  },
+  {
+    title: 'Three Notch Community Health',
+    blurb: 'Community health center in Andalusia, AL. Sliding-scale consultations, classes, and a replicable Community Vitality Center model.',
+    href: 'https://threenotchcommunityhealth.com',
+    domain: 'Clinic',
+  },
+  {
+    title: 'HerbalMedicine.AI',
+    blurb: 'Tier-gated chat product grounded in clinical herbalism. WordPress membership to Supabase via custom JWT bridge.',
+    href: '/workflows#case-3',
+    domain: 'AI workflow',
+  },
+];
+---
+<BaseLayout current="home">
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <p class="eyebrow">Easley Consulting</p>
+      <h1 class="hero__title">Thomas Easley.</h1>
+      <p class="hero__sub">Herbalist, educator, builder of useful things.</p>
+      <p class="hero__lede">
+        I run a herbal medicine school, see clients in clinical practice, write books, and build the AI tooling that holds the whole thing together. When the problem is interesting and the people are good, I take on outside work.
+      </p>
+      <div class="cta-row">
+        <a class="cta" href="/work">See the work</a>
+        <a class="cta" href="/inquire">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">What I do</p>
+      <div class="grid grid--3 what">
+        <div>
+          <h3>Herbal medicine and clinical practice</h3>
+          <p>Twenty-plus years in clinical herbalism. Four books in print, including <em>The Modern Herbal Dispensatory</em>. I run the Eclectic School of Herbal Medicine and a community clinic in Andalusia, Alabama.</p>
+        </div>
+        <div>
+          <h3>Education and curriculum design</h3>
+          <p>Foundational and clinical curriculum used by hundreds of students across multiple programs. Practical pedagogy that doesn't waste anyone's time.</p>
+        </div>
+        <div>
+          <h3>AI workflows and knowledge systems</h3>
+          <p>Custom Claude-powered pipelines for research, knowledge extraction, and clinical reasoning. I built the LLM-driven Encyclopaedia of the history of medicine and the hybrid search index over our 370-book reference library.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Featured work</p>
+      <div class="grid grid--3 cards">
+        {featured.map((p) => (
+          <a class="card" href={p.href}>
+            <span class="card__tag">{p.domain}</span>
+            <h3 class="card__title">{p.title}</h3>
+            <p class="card__blurb">{p.blurb}</p>
+            <span class="card__arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+      <p style="margin-top: var(--space-4);"><a class="cta" href="/work">See the full portfolio</a></p>
+    </div>
+  </section>
+
+  <section class="section workflows-teaser">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow">Workflows</p>
+      <h2>AI workflows that hold real systems together.</h2>
+      <p class="lede">
+        I don't sell AI hype. I build LLM-powered tooling for projects where the alternative is a person doing ten thousand hours of tedious work. Three case studies from work running in production right now.
+      </p>
+      <p style="margin-top: var(--space-3);"><a class="cta" href="/workflows">Read the writeups</a></p>
+    </div>
+  </section>
+
+  <section class="section inquire-cta">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow">Inquire</p>
+      <h2>Selective by design.</h2>
+      <p class="lede">
+        I take a small number of outside projects each year, when the problem is interesting and the people are good. If that sounds like your situation, tell me about it.
+      </p>
+      <p style="margin-top: var(--space-3);"><a class="cta" href="/inquire">Start a conversation</a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: var(--space-7) 0 var(--space-6);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .hero__title {
+    margin-bottom: var(--space-2);
+  }
+
+  .hero__sub {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+    color: var(--ink-soft);
+    margin-bottom: var(--space-4);
+    max-width: var(--measure);
+  }
+
+  .hero__lede {
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 38rem;
+  }
+
+  .what h3 {
+    border-top: 1px solid var(--accent);
+    padding-top: var(--space-2);
+    margin-bottom: var(--space-2);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+
+  .what p {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .cards .card {
+    position: relative;
+    display: block;
+    padding: var(--space-3);
+    background: var(--bg-elev);
+    border: 1px solid var(--rule-soft);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 120ms ease, transform 200ms ease, background 120ms ease;
+    border-radius: 2px;
+  }
+
+  .cards .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .card__tag {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    display: inline-block;
+  }
+
+  .card__title {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+  }
+
+  .card__blurb {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: var(--space-2);
+  }
+
+  .card__arrow {
+    color: var(--accent);
+    font-family: var(--sans);
+    transition: transform 200ms ease;
+    display: inline-block;
+  }
+
+  .cards .card:hover .card__arrow { transform: translateX(4px); }
+
+  .workflows-teaser, .inquire-cta {
+    background: var(--bg-elev);
+  }
+</style>

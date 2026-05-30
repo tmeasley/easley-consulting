@@ -1,0 +1,69 @@
+---
+const year = 2026;
+---
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__col">
+      <div class="footer__mark"></div>
+      <p class="footer__line">Thomas Easley · Andalusia, Alabama</p>
+      <p class="footer__line"><a href="mailto:thomas@eclecticschoolofherbalmedicine.com">thomas@eclecticschoolofherbalmedicine.com</a></p>
+    </div>
+    <div class="footer__col footer__col--right">
+      <p class="footer__line"><a href="/work">Work</a></p>
+      <p class="footer__line"><a href="/workflows">Workflows</a></p>
+      <p class="footer__line"><a href="/inquire">Inquire</a></p>
+      <p class="footer__line footer__copy">© {year}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--rule);
+    background: var(--bg-elev);
+    padding: var(--space-5) 0 var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  .footer__col--right {
+    text-align: right;
+  }
+
+  .footer__mark {
+    width: 16px;
+    height: 16px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-bottom: var(--space-2);
+  }
+
+  .footer__line {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin: 0 0 0.4rem;
+  }
+
+  .footer__line a {
+    text-decoration: none;
+    color: var(--ink-soft);
+  }
+  .footer__line a:hover { color: var(--accent); }
+
+  .footer__copy {
+    color: var(--ink-faint);
+    margin-top: var(--space-3);
+    font-size: 0.82rem;
+  }
+
+  @media (max-width: 540px) {
+    .footer__inner { grid-template-columns: 1fr; }
+    .footer__col--right { text-align: left; }
+  }
+</style>

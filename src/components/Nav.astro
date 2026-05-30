@@ -1,0 +1,101 @@
+---
+const { current = '' } = Astro.props;
+const links = [
+  { href: '/', label: 'Easley Consulting', mark: true },
+  { href: '/work', label: 'Work' },
+  { href: '/workflows', label: 'Workflows' },
+  { href: '/inquire', label: 'Inquire' },
+];
+---
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class={`nav__brand${current === 'home' ? ' is-current' : ''}`} href="/">
+      <span class="nav__mark" aria-hidden="true"></span>
+      <span>Easley Consulting</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/work" class={current === 'work' ? 'is-current' : ''}>Work</a>
+      <a href="/workflows" class={current === 'workflows' ? 'is-current' : ''}>Workflows</a>
+      <a href="/inquire" class={current === 'inquire' ? 'is-current' : ''}>Inquire</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    border-bottom: 1px solid var(--rule-soft);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: saturate(140%) blur(8px);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .nav__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .nav__brand:hover { color: var(--accent); }
+
+  .nav__mark {
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--rule);
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    font-family: var(--sans);
+    font-size: 0.92rem;
+  }
+
+  .nav__links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 120ms ease;
+    position: relative;
+    padding-bottom: 2px;
+  }
+
+  .nav__links a.is-current {
+    color: var(--ink);
+  }
+
+  .nav__links a.is-current::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .nav__links a:hover { color: var(--accent); }
+
+  @media (max-width: 540px) {
+    .nav__brand span:last-child { display: none; }
+    .nav__links { gap: 1.2rem; }
+  }
+</style>

@@ -1,0 +1,71 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const {
+  title = 'Easley Consulting — Thomas Easley',
+  description = 'Thomas Easley — herbalist, educator, and builder. Consulting on AI workflows, herbal medicine practice, and education. Selective intake.',
+  current = '',
+  og_image = '/og-default.png',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#15140f" media="(prefers-color-scheme: dark)" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- OG -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Easley Consulting" />
+    <meta property="og:image" content={new URL(og_image, Astro.site).toString()} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- JSON-LD Person -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Thomas Easley",
+      "url": "https://easley.consulting",
+      "jobTitle": "Herbalist · Educator · Builder",
+      "email": "thomas@eclecticschoolofherbalmedicine.com",
+      "worksFor": [
+        { "@type": "Organization", "name": "Eclectic School of Herbal Medicine", "url": "https://eclecticschoolofherbalmedicine.com" },
+        { "@type": "Organization", "name": "Three Notch Community Health", "url": "https://threenotchcommunityhealth.com" }
+      ],
+      "knowsAbout": [
+        "Herbal medicine",
+        "Clinical herbalism",
+        "AI workflows",
+        "Knowledge systems",
+        "LLM pipelines",
+        "Curriculum design"
+      ]
+    })} />
+  </head>
+  <body>
+    <Nav current={current} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
