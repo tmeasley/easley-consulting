@@ -33,6 +33,11 @@ const groups = [
         title: 'ThomasBrain Search',
         blurb: 'Hybrid semantic and keyword MCP server over 200+ herbs, conditions, protocols, and curriculum. The retrieval layer behind every AI system above.',
       },
+      {
+        title: 'Prose',
+        blurb: 'Mac and Windows markdown reader and editor. Clean typography, focused writing surface, designed for AI-assisted drafting workflows. First Electron app I shipped.',
+        href: 'https://github.com/tmeasley/prose',
+      },
     ],
   },
   {
@@ -94,6 +99,9 @@ const groups = [
       <p class="lede">
         Most of what's listed below is live and in use. A few projects are still finding their shape. Everything ships, runs, or earns.
       </p>
+      <p class="meta-note">
+        This is the public-facing slice. Most of what I build is client work, internal tooling, or in-progress — happy to walk through any of it on request.
+      </p>
     </div>
   </section>
 
@@ -132,6 +140,15 @@ const groups = [
 
 <style>
   .intro h1 { margin-bottom: var(--space-3); }
+
+  .meta-note {
+    font-size: 0.92rem;
+    color: var(--ink-faint);
+    font-style: italic;
+    margin-top: var(--space-3);
+    padding-left: var(--space-2);
+    border-left: 2px solid var(--rule);
+  }
 
   .group__title {
     font-size: 0.82rem;
